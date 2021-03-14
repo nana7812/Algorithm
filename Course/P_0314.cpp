@@ -15,25 +15,20 @@ bool check[501][501];
 int ans = 0;
 
 void dfs(int x, int y){
-    queue<pair<int, int>> q;
-    q.push(make_pair(x,y));
-    check[x][y] = true;
-    while(!q.empty()){
-        int qx = q.front().first;
-        int qy = q.front().second;
-        q.pop();
-       if(qx == n-1 && qy == m-1) ans++;
-       for(int i = 0; i < 4; i++){
-            int nx = qx + dx[i];
-            int ny = qy + dy[i];
-            if(0<= nx && nx < n && 0 <= ny && ny < m){
-                if(a[nx][ny] < a[qx][qy]){
-                    q.push(make_pair(nx,ny));
-                   // cout<<a[nx][ny]<<" ";
-                }
+    if(x == n-1 && y == m-1){
+        ans++;
+        return;
+    }
+    for(int i = 0; i < 4; i++){
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+        if(0<= nx && nx < n && 0 <= ny && ny <m ) {
+            if (a[nx][ny] < a[x][y]) {
+                dfs(nx, ny);
             }
         }
     }
+    return;
 }
 
 int main() {
