@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <deque>
 #include <cstring>
-
+//
 using namespace std;
 
 int N, K, L,dir;
